@@ -22,7 +22,7 @@ public class TwoSum {
                 data.put(numbers[i],numbers[i]+"$"+ i); 
             }
         }
-        
+        //sjj test 001 I made some change 
         System.out.println("index1:" + index1 + " index2:" + index2); 
         int[] ret = new int[2]; 
         ret[0] = index1; 

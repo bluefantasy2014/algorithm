@@ -28,6 +28,7 @@ public class TwoSum {
         ret[0] = index1; 
         ret[1] = index2;
         
+        //sjj make another change for testing 
         return ret; 
     }
 }

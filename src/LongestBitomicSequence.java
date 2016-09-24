@@ -5,7 +5,8 @@ public class LongestBitomicSequence {
 		int[] a = {80, 60, 30, 40, 20, 10}; 
 		System.out.println(LBS(a)); 
 	}
-	
+
+//shijijun test 002	
 	public static int LBS(int[] a) {
 		int[] l = new int[a.length];  //store the length of LBS ending with a[i]
 		int[] m = new int[a.length];  //store the mode(increase,decrease, or both) of the LBS for l[i]. 1:increase; 2:decrease; 0:both;

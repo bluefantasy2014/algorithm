@@ -1,0 +1,29 @@
+
+public class Test {
+	//2个鸡蛋N层楼
+	public static int N = 10; 
+	public static void main(String[] args) {
+		int[][] count = new int[2][N+1]; 
+		for (int i = 1; i<N+1; ++i){
+			count[0][i] = i; 
+		}
+		
+		count[1][1] = 1; 
+		for (int i = 2; i<=N; ++i){
+			int min = Integer.MAX_VALUE; 
+			for (int floor = 1; floor <=i; ++floor){
+				int max = 1 +  Integer.max(count[0][floor-1], count[1][i-floor]); 
+				System.out.println(i+"层楼：" + "尝试楼层:" + floor + "," + max);
+				if (max < min){
+					System.out.println("###"+i+"层楼：" + "尝试楼层:" + floor + "," +min + "->" + max);
+					min = max; 
+				}
+			}
+			count[1][i] = min; 
+		}
+		
+		System.out.println(count[1][N]);
+	}
+
+	 
+}

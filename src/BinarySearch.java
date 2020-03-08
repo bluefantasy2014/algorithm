@@ -10,21 +10,23 @@ public class BinarySearch {
         int[] data = {1,2,3,4,5};
         int N = 10000000;
 
-        long startTime = System.currentTimeMillis();
-        int total = 0;
-        for (int i = 0; i<N; ++i) {
-            total += bsv1(data,0,data.length - 1, 5 );
-        }
-        System.out.println("v1 time: " + (System.currentTimeMillis() - startTime));
+//        long startTime = System.currentTimeMillis();
+//        int total = 0;
+//        for (int i = 0; i<N; ++i) {
+//            total += bsv1(data,0,data.length - 1, 5 );
+//        }
+//        System.out.println("v1 time: " + (System.currentTimeMillis() - startTime));
+//
+//
+//        startTime = System.currentTimeMillis();
+//        total = 0;
+//        for (int i = 0; i<N; ++i) {
+//            total += bsv2(data, 5 );
+//        }
+//
+//        System.out.println("v2 time: " + (System.currentTimeMillis() - startTime));
 
-
-        startTime = System.currentTimeMillis();
-        total = 0;
-        for (int i = 0; i<N; ++i) {
-            total += bsv2(data, 5 );
-        }
-
-        System.out.println("v2 time: " + (System.currentTimeMillis() - startTime));
+        test_bsv2();
     }
 
     public static void test_bsv1() {
@@ -106,7 +108,7 @@ public class BinarySearch {
         int eIndex = data.length - 1;
         int midIndex;
 
-        while (sIndex < eIndex) {
+        while (sIndex <= eIndex) {
             midIndex = sIndex + (eIndex - sIndex) / 2;
             if (data[midIndex] == e) {
                 return midIndex;
@@ -117,10 +119,6 @@ public class BinarySearch {
             if (data[midIndex] > e) {
                 eIndex = midIndex - 1;
             }
-        }
-
-        if (sIndex == eIndex) {
-            return data[sIndex] == e ? sIndex : -1 ;
         }
 
         return - 1;

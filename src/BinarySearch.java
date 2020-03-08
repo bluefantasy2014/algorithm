@@ -5,11 +5,41 @@
  */
 public class BinarySearch {
     public static void main(String[] args) {
+//        test_bsv2();
+
+        int[] data = {1,2,3,4,5};
+        int N = 10000000;
+
+        long startTime = System.currentTimeMillis();
+        int total = 0;
+        for (int i = 0; i<N; ++i) {
+            total += bsv1(data,0,data.length - 1, 5 );
+        }
+        System.out.println("v1 time: " + (System.currentTimeMillis() - startTime));
+
+
+        startTime = System.currentTimeMillis();
+        total = 0;
+        for (int i = 0; i<N; ++i) {
+            total += bsv2(data, 5 );
+        }
+
+        System.out.println("v2 time: " + (System.currentTimeMillis() - startTime));
+    }
+
+    public static void test_bsv1() {
         int[] data = {1,2,3,4,5};
 
         System.out.println(bsv1(data,0,data.length - 1, 5 ));
         System.out.println(bsv1(data,0,data.length - 1, 0 ));
         System.out.println(bsv1(data,0,data.length - 1, 1 ));
+    }
+
+    public static void  test_bsv2() {
+        int[] data = {1,2,3,4,5};
+        System.out.println(bsv2(data, 5 ));
+        System.out.println(bsv2(data, 0 ));
+        System.out.println(bsv2(data, 1 ));
     }
 
     /**
@@ -40,6 +70,7 @@ public class BinarySearch {
 
 
     /**
+     * 自己改进版： 没有问题
      * @param data
      * @param start
      * @param end
@@ -61,5 +92,37 @@ public class BinarySearch {
         }else {
             return bsv1(data,start,mid - 1,e);
         }
+    }
+
+
+    /**
+     * 非递归 ： 没有问题
+     * @param data
+     * @param e
+     * @return
+     */
+    public static int bsv2(int [] data, int e) {
+        int sIndex = 0;
+        int eIndex = data.length - 1;
+        int midIndex;
+
+        while (sIndex < eIndex) {
+            midIndex = sIndex + (eIndex - sIndex) / 2;
+            if (data[midIndex] == e) {
+                return midIndex;
+            }
+            if (data[midIndex] < e) {
+                sIndex = midIndex + 1;
+            }
+            if (data[midIndex] > e) {
+                eIndex = midIndex - 1;
+            }
+        }
+
+        if (sIndex == eIndex) {
+            return data[sIndex] == e ? sIndex : -1 ;
+        }
+
+        return - 1;
     }
 }
